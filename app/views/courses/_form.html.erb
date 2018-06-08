@@ -1,0 +1,11 @@
+<% if @course.errors.any? %>
+	<ul>
+		<% @course.errors.full_messages.each do |msg| %>
+			<li><%= msg%></li>
+		<% end %>
+	</ul>	
+<% end %>
+<%= form_for @course do |f| %>
+	Name: <%= f.text_field :name%></br></br>
+<%= f.submit %>
+<% end %>

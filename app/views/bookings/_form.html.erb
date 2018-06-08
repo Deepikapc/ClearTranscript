@@ -1,0 +1,12 @@
+<% if @booking.errors.any? %>
+	<ul>
+		<% @booking.errors.full_messages.each do |msg| %>
+			<li><%= msg%></li>
+		<% end %>
+	</ul>	
+<% end %>
+<%= form_for @booking do |f| %>
+CourseName: <%= f.collection_select :course_id,Course.all,:id,:name%><br/><br/>
+Slot:<%= f.text_field :slot%><br/><br/>
+<%= f.submit %>
+<% end %>

@@ -1,0 +1,24 @@
+<h2>List of booking(<%= @bookings.length %>)</h2>
+<% if @bookings.empty? %>
+	<p>"Records have not been added yet!"</p>
+	<% else %>
+	<table>
+		<tr>
+			<th>Slot</th>
+			<th>Course</th>
+		</tr>
+		<tbody>
+			<% @bookings.each do |booking| %>
+			<tr>
+				<td><%= link_to booking.slot ,booking_path(booking.id) %></td>
+				<td><%= booking.course.name rescue 'nil'%></td>
+				<td><%= link_to "Edit",edit_booking_path(booking.id) %></td>
+				<td><%= link_to "Destroy",booking_path(booking.id),method: :delete,data: {confirm: "Are you sure?"} %></td>
+			</tr>
+			<% end  %>
+			
+		</tbody>
+	</table>
+<% end %>	
+<br/>
+<%= link_to "Add Booking",new_booking_path %>

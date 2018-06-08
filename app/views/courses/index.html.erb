@@ -1,0 +1,21 @@
+<h2>Listing of courses(<%= @courses.length%>)</h2>
+<% if @courses.empty? %>
+	<p>"Records not found!"</p>
+	<% else %>
+	<table>
+		<tr>
+			<th>Name</th>
+		</tr>
+		<tbody>
+			<% @courses.each do |course| %>
+			<tr>
+				<td><%= link_to course.name,course_path(course.id) %></td>
+				<td><%= link_to "Edit",edit_course_path(course.id) %></td>
+				<td><%= link_to "Destroy",course_path(course.id),method: :delete,data: {confirm: "Are you sure?"} %></td>
+			</tr>
+			<% end  %>
+		</tbody>
+	</table>
+<% end %>	
+
+<%= link_to "Add course",new_course_path %>

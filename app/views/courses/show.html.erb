@@ -1,0 +1,8 @@
+<h2>show course</h2>
+Name:<%= @course.name %><br/>
+Section:
+<% @course.sections.each do |section| %>
+ 	<li><%=section.header %></li>
+<% end %>
+<br/>
+<%= link_to "Back",courses_path%>
